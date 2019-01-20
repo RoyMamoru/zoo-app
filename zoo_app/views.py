@@ -68,7 +68,7 @@ def history(request):
     current_user = request.user
     collections = ZooCollection.objects.filter(user_id=current_user.id).order_by('animal_id').values_list('animal_id')
     if not collections:
-        return render(request, 'zoo_app/history_nan.html', {})
+        return render(request, 'zoo_app/history.html', {})
     else:
         historys = []
         for id in collections:

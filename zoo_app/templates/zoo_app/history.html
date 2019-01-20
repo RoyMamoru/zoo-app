@@ -12,31 +12,36 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="carousel col s12">
-    {% for history in historys %}
-      {% for info in history %}
-        <a class="carousel-item" href="#{{info.animal_id}}" style="width:350px;"><img src="static/images/animal_{{info.animal_id}}.png" style="width:350px;"></a>
+{% if historys %}
+  <div class="row">
+    <div class="carousel col s12">
+      {% for history in historys %}
+        {% for info in history %}
+          <a class="carousel-item" href="#{{info.animal_id}}" style="width:350px;"><img src="static/images/animal_{{info.animal_id}}.png" style="width:350px;"></a>
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <table>
-    {% for history in historys %}
-    <tr>
-      {% for info in history %}
-        <td id="{{info.animal_id}}">{{info.animal_id}}</td>
-        <td><img src="static/images/animal_{{info.animal_id}}.png"></td>
-        <td width="100px">{{info.animal_name}}</td>
-        <td width="240px">{{info.animal_title}}</td>
-        <td>{{info.animal_disc}}</td>
+  <div class="row">
+    <table>
+      {% for history in historys %}
+      <tr>
+        {% for info in history %}
+          <td id="{{info.animal_id}}">{{info.animal_id}}</td>
+          <td><img src="static/images/animal_{{info.animal_id}}.png"></td>
+          <td width="100px">{{info.animal_name}}</td>
+          <td width="240px">{{info.animal_title}}</td>
+          <td>{{info.animal_disc}}</td>
+        {% endfor %}
+      </tr>
       {% endfor %}
-    </tr>
-    {% endfor %}
-  </table>
-</div>
+    </table>
+  </div>
+
+{% else %}
+  <h1>履歴がありません。</h1>
+{% endif %}
 
 {% endblock %}
 
